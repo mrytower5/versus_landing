@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import '../styles.css'; 
+import '../Styles/styles.css';
+import '../Styles/customform.scss';  
 
 function CustomForm ({ status, message, onValidated }) {
 
