@@ -9,14 +9,9 @@ function CustomForm ({ status, message, onValidated }) {
         email: ""
     }); 
 
-    // const {modalOpen, setModalOpen} = (false); 
-
     useEffect(() => {
         if(status === "success") clearFields(); 
     }); 
-        
-    //     if(modalOpen && status === "success") clearFields(); 
-    // }, [status, modalOpen])
 
     function clearFields() {
         setContact(""); 
@@ -119,7 +114,7 @@ function CustomForm ({ status, message, onValidated }) {
                     onClick={refreshPage}
                     label="close"
                     size="big"
-                    className="closeButton">Close</button> : 
+                    className="closeButton">Refresh</button> : 
                 <input
                     label="subscribe"
                     type="submit"
