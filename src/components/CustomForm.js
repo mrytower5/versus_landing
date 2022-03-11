@@ -9,19 +9,21 @@ function CustomForm ({ status, message, onValidated }) {
         email: ""
     }); 
 
-    const {modalOpen, setModalOpen} = (false); 
-
-    // const [email, setEmail] = useState(''); 
-    // const [firstName, setFirstName] = useState(''); 
-    // const [lastName, setLastName] = useState(''); 
+    // const {modalOpen, setModalOpen} = (false); 
 
     useEffect(() => {
         if(status === "success") clearFields(); 
-        if(modalOpen && status === "success") clearFields(); 
-    }, [status, modalOpen])
+    }); 
+        
+    //     if(modalOpen && status === "success") clearFields(); 
+    // }, [status, modalOpen])
 
     function clearFields() {
         setContact(""); 
+    }
+
+    function refreshPage() {
+        window.location.reload(false);  
     }
 
     function handleChange(event) {
@@ -60,20 +62,20 @@ function CustomForm ({ status, message, onValidated }) {
 
             {status === "sending" && (
                 <div 
-                    className="mailchimpAlert__alertSending">
+                    className="mailchimpAlertSending">
                     sending...
                 </div>
             )}
             {status === "error" && (
                 <div 
-                className="mailchimpAlert__alertError"
+                className="mailchimpAlertError"
                 dangerouslySetInnerHTML={{ __html: message }}
                 >
                 </div>
             )}
             {status === "success" && (
                 <div
-                    className="mailchimpAlert__alertSuccess"
+                    className="mailchimpAlertSuccess"
                     dangerouslySetInnerHTML={{ __html: message }}>
                     </div>
             )}
@@ -114,16 +116,16 @@ function CustomForm ({ status, message, onValidated }) {
             ) : null}
 
                 {status === "success" ? <button
-                    handleClick={() => setModalOpen(false)}
+                    onClick={refreshPage}
                     label="close"
                     size="big"
-                    className="gJustifySelfCenter">Close</button> : 
+                    className="closeButton">Close</button> : 
                 <input
                     label="subscribe"
                     type="submit"
                     formvalues={[contact.email, contact.firstName, contact.lastName]}
                 />
-                }            
+                }
         </form>
     );  
 };  
